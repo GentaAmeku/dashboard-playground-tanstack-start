@@ -10,7 +10,7 @@
 
 ## 📷 ショーケース
 
-https://github.com/user-attachments/assets/6cddd292-cd2a-4ae4-9db5-8210b4bd98f7
+https://github.com/user-attachments/assets/95d3782f-63ca-4186-8b4d-dca599d0f957
 
 ## 🛠️ 技術スタック
 
