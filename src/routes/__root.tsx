@@ -12,6 +12,7 @@ import AppHeader from "@/components/AppHeader";
 import AppSidebar from "@/components/AppSidebar";
 import PageContainer from "@/components/PageContainer";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import { getTheme } from "@/lib/server/theme";
 import appCss from "../styles.css?url";
 
 export const Route = createRootRouteWithContext<{
@@ -25,6 +26,10 @@ export const Route = createRootRouteWithContext<{
     ],
     links: [{ rel: "stylesheet", href: appCss }],
   }),
+  loader: async () => {
+    const result = await getTheme();
+    return { theme: result.value };
+  },
   shellComponent: RootDocument,
 });
 
@@ -33,8 +38,9 @@ interface RootDocumentProps {
 }
 
 function RootDocument({ children }: RootDocumentProps) {
+  const { theme } = Route.useLoaderData();
   return (
-    <html lang="en">
+    <html lang="en" className={theme} suppressHydrationWarning>
       {/* biome-ignore lint/style/noHeadElement: TanStack Start requires <head> element */}
       <head>
         <HeadContent />
